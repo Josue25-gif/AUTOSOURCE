@@ -59,6 +59,9 @@ mongoose.connect(mongoURI, {
 app.listen(port, () => {
     console.log(`🚀 Servidor escuchando en el puerto ${port}`);
 });
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a9f4726 (primer commit)

@@ -69,6 +69,10 @@ router.post('/registro', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a9f4726 (primer commit)
 // Ruta de inicio de sesión
 router.post('/login', async (req, res) => {
     const { correo, contraseña } = req.body;
