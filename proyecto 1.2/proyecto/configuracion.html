@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdIcBMrwrQ2tDBtCZMk1XzVD8ThFHKA60&libraries=places"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        const clave = "miClaveSecreta123"; 
+
+        function encriptarRuta(ruta) {
+            let cifrado = CryptoJS.AES.encrypt(ruta, clave).toString();
+            return encodeURIComponent(cifrado);
+        }
+
+        window.onload = function() {
+            let rutaOriginal = "proyecto_1.2/proyecto_1.2/proyecto_1.2/proyecto_1.2/a.html";
+            let rutaCifrada = encriptarRuta(rutaOriginal);
+
+            console.log("Ruta encriptada:", rutaCifrada); 
+
+           
+            window.history.replaceState(null, "", "?ruta=" + rutaCifrada);
+        };
+    </script><title>Venta de Vehículos</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="WhatsApp Image 2025-03-05 at 10.28.38 PM.jpeg" alt="AutoSource">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="coches.html">Vehiculos</a></li>
+                <li><a href="cotizaciones.html">Cotizaciones</a></li>
+                <li><a href="proxi.html">Proximamente</a></li>
+            </ul>
+        </nav>
+        <div class="iconos">
+            <span id="login-section">
+                <a href="iniciar_sesion.html" id="login-link">Login</a>
+            </span>
+            <span id="welcome-message" style="display: none;">
+                <span>Bienvenido, has iniciado sesión!</span>
+            </span>
+            <div class="dropdown">
+                <a href="#" id="icono-usuario" style="display: none;" onclick="toggleMenu()">
+                    <img src="imagenes/logo_login.png" alt="Usuario" />
+                </a>
+                <div id="user-menu" class="dropdown-menu" style="display: none;">
+                    <a class="dropdown-item" href="configuracion.html">Configuración</a>
+                    <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="container my-5">
+            <h2>Configuración</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Perfil de Usuario</h3>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" value="John Doe" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Ingresa tu dirección">
+                        <div id="suggestions" class="list-group" style="display: none;"></div>
+                    </div>
+                    <a href="editarusuarios.html" class="btn btn-primary">Editar Usuario</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let usuarioConectado = false; // Estado inicial
+
+        function cerrarSesion() {
+            localStorage.removeItem('usuarioConectado'); // Elimina el estado de sesión
+            usuarioConectado = false; // Cambia el estado a no conectado
+            actualizarInterfaz();
+        }
+
+        function actualizarInterfaz() {
+            const loginSection = document.getElementById('login-section');
+            const welcomeMessage = document.getElementById('welcome-message');
+            const iconoUsuario = document.getElementById('icono-usuario');
+            const userMenu = document.getElementById('user-menu');
+
+            if (usuarioConectado) {
+                loginSection.style.display = 'none'; // Oculta la sección de login
+                welcomeMessage.style.display = 'inline'; // Muestra el mensaje de bienvenida
+                iconoUsuario.style.display = 'inline'; // Muestra el icono de usuario
+                userMenu.style.display = 'block'; // Muestra el menú de usuario
+            } else {
+                loginSection.style.display = 'inline'; // Muestra la sección de login
+                welcomeMessage.style.display = 'none'; // Oculta el mensaje de bienvenida
+                iconoUsuario.style.display = 'none'; // Oculta el icono de usuario
+                userMenu.style.display = 'none'; // Oculta el menú de usuario
+            }
+        }
+
+        function toggleMenu() {
+            const userMenu = document.getElementById('user-menu');
+            userMenu.style.display = userMenu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function verificarSesion() {
+            usuarioConectado = localStorage.getItem('usuarioConectado') === 'true';
+            actualizarInterfaz();
+            initAutocomplete();
+        }
+
+        function initAutocomplete() {
+            try {
+                const input = document.getElementById('direccion');
+                const autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.addListener('place_changed', function() {
+                    const place = autocomplete.getPlace();
+                    if (place && place.formatted_address) {
+                        input.value = place.formatted_address;
+                    }
+                });
+            } catch (error) {
+                console.error('Error al inicializar el autocompletado de direcciones:', error);
+            }
+        }
+
+        // Llama a verificarSesion al cargar la página
+        window.onload = verificarSesion;
+    </script>
+</body>
+</html>

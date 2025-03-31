@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Confirmada</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        const clave = "miClaveSecreta123"; 
+
+        function encriptarRuta(ruta) {
+            let cifrado = CryptoJS.AES.encrypt(ruta, clave).toString();
+            return encodeURIComponent(cifrado);
+        }
+
+        window.onload = function() {
+            let rutaOriginal = "proyecto_1.2/proyecto_1.2/proyecto_1.2/proyecto_1.2/a.html";
+            let rutaCifrada = encriptarRuta(rutaOriginal);
+
+            console.log("Ruta encriptada:", rutaCifrada); 
+
+           
+            window.history.replaceState(null, "", "?ruta=" + rutaCifrada);
+        };
+    </script><title>Venta de Vehículos</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('imagenes/agencia.jpg') no-repeat center center fixed;
+            margin: 0;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .breadcrumb {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin-right: 10px;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .mensaje {
+            background-color: #ffffff8f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: aparecer 1s forwards;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mensaje:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes aparecer {
+            0% {
+                opacity: 0;
+                transform: scale(0.20);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff0;
+            opacity: 0.7;
+            position: absolute;
+            top: -10px;
+            animation: caer 3s linear infinite;
+        }
+
+        @keyframes caer {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="coches.html">Vehículos</a></li>
+          <li class="breadcrumb-item"><a href="detalles.html">Comprar</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Comprado</li>
+        </ol>
+    </nav>
+    <div class="mensaje">
+        <h2>¡Felicidades!</h2>
+        <p>Tu compra será enviada a tu domicilio proporcionado.</p>
+    </div>
+    <script>
+        function crearConfetti() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDuration = Math.random() * 2 + 2 + "s";
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+        setInterval(crearConfetti, 500);
+    </script>
+</body>
+</html>
