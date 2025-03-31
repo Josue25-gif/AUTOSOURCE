@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoSource</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Swiper.js para el carrusel -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="WhatsApp Image 2025-03-05 at 10.28.38 PM.jpeg" alt="AutoSource">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="coches.html">Vehiculos</a></li>
+                <li><a href="cotizaciones.html">Cotizaciones</a></li>
+                <li><a href="proxi.html">Proximamente</a></li>
+            </ul>
+        </nav>
+        <!-- Iconos de Login y Carrito -->
+        <div class="iconos">
+
+            <a href="inicio_secion.html">Login</a>
+           
+        </div>
+    </header>
+
+            <span id="login-section">
+                <a href="inicio_secion.html" id="login-link">Login</a>
+            </span>
+            <span id="welcome-message" style="display: none;">
+                <span>Bienvenido, has iniciado sesión!</span>
+                <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+            </span>
+        </div>
+    </header>
+    <main>
+        <!-- Carrusel -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="2.png" alt="Camioneta 1"></div>
+                <div class="swiper-slide"><img src="imagenes/3.png" alt="Camioneta 2"></div>
+                <div class="swiper-slide"><img src="imagenes/5.png" alt="Camioneta 3"></div>
+                <div class="swiper-slide"><img src="imagenes/6.png" alt="Camioneta 4"></div>
+            </div>
+
+            <!-- Botones de navegación -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Paginación -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <section class="descripcion">
+            <h2>Estrena el Auto nuevo o seminuevo que siempre has deseado</h2>
+        </section>
+
+        <section class="opciones">
+            <a href="cotizaciones.html">
+                <div class="opcion">
+                    <img src="coti.png" alt="Cotizaciones">
+                    <p>Cotizaciones</p>
+                </div>
+            </a>
+            <a href="servicio.html">
+                <div class="opcion">
+                    <img src="imagenes/ser.jpg" alt="Financiamiento">
+                    <p>Servicio</p>
+                </div>
+            </a>
+            <a href="localizar.html">
+                <div class="opcion">
+                    <img src="imagenes/loca.png" alt="Localiza tu Distribuidor">
+                    <p>Localiza tu Distribuidor</p>
+                </div>
+            </a>
+            <a href="prueba.html">
+                <div class="opcion">
+                    <img src="imagenes/prue.jpg" alt="Prueba de Manejo">
+                    <p>Prueba de Manejo</p>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Síguenos en:</p>
+        <div class="redes">
+            <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a>
+        </div>
+        <!-- Mapa de sitio -->
+        <section class="mapa-sitio">
+            <h3>Vehiculos</h3>
+            <ul class="mapa-lista">
+                <li><a href="coches.html">Vehículos</a></li>
+                <li><a href="cotizaciones.html">Cotizaciones</a></li>
+                <li><a href="servicio.html">Servicios</a></li>
+                <li><a href="localizar.html">Localiza tu Distribuidor</a></li>
+                <li><a href="prueba.html">Prueba de Manejo</a></li>
+                <li><a href="proxi.html">Próximamente</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="mapa_sitio.html">Mapa de Sitio</a></li>
+            </ul>
+        </section>
+    </footer>
+
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="a.js"></script>
+
+    <script>
+        let usuarioConectado = false; // Estado inicial
+
+        function iniciarSesion() {
+            localStorage.setItem('usuarioConectado', 'true'); // Guarda el estado en localStorage
+            usuarioConectado = true; // Cambia el estado al iniciar sesión
+            actualizarInterfaz();
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem('usuarioConectado'); // Elimina el estado de sesión
+            usuarioConectado = false; // Cambia el estado a no conectado
+            actualizarInterfaz();
+        }
+
+        function actualizarInterfaz() {
+            const loginSection = document.getElementById('login-section');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            if (usuarioConectado) {
+                loginSection.style.display = 'none'; // Oculta la sección de login
+                welcomeMessage.style.display = 'inline'; // Muestra el mensaje de bienvenida
+            } else {
+                loginSection.style.display = 'inline'; // Muestra la sección de login
+                welcomeMessage.style.display = 'none'; // Oculta el mensaje de bienvenida
+            }
+        }
+
+        function verificarSesion() {
+            usuarioConectado = localStorage.getItem('usuarioConectado') === 'true';
+            actualizarInterfaz();
+        }
+
+        // Llama a verificarSesion al cargar la página
+        window.onload = verificarSesion;
+    </script>
+</body>
+</html>

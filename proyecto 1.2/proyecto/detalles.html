@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Detalles del Vehículo</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background: url('imagenes/fondo_general.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .vehicle-detail {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 50%;
+        }
+        .vehicle-detail img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .buy-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="AutoSource">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="coches.html">Vehículos</a></li>
+                <li><a href="cotizaciones.html">Cotizaciones</a></li>
+                <li><a href="proxi.html">Próximamente</a></li>
+            </ul>
+        </nav>
+        <div class="iconos">
+            <a href="inicio_secion.html">Login</a>
+        </div>
+    </header>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="coches.html">Vehículos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+        </ol>
+    </nav>
+
+    <div class="vehicle-detail">
+        <img id="car-image" src="" alt="Imagen del Vehículo">
+        <h3 id="car-name"></h3>
+        <p>Marca: <span id="car-brand"></span></p>
+        <p>Año: <span id="car-year"></span></p>
+        <p>Precio: <span id="car-price"></span></p>
+        <button id="buyButton" class="buy-button" onclick="comprarVehiculo()">Comprar</button>
+    </div>
+
+    <div class="video-container">
+        <iframe src="http://localhost:5000/videos/Nueva.mp4" frameborder="0" allowfullscreen></iframe>
+
+    </div>
+
+
+  <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const carId = urlParams.get("id");
+
+            if (!carId) {
+                console.error("No se proporcionó un ID de vehículo");
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/autos/${carId}`);
+                const car = await response.json();
+
+                document.getElementById("car-name").textContent = `${car.marca} ${car.modelo}`;
+                document.getElementById("car-brand").textContent = car.marca;
+                document.getElementById("car-year").textContent = car.anio;
+                document.getElementById("car-price").textContent = `$${car.precio.toLocaleString("es-MX")}`;
+                document.getElementById("car-image").src = `http://localhost:5000/imagenes/${car.imageUrl}`;
+                document.getElementById("car-video").src = `http://localhost:5000/videos/${car.videoUrl}`;
+
+                // Guardar datos del vehículo para la compra
+                document.getElementById("buyButton").setAttribute("data-id", car._id);
+                document.getElementById("buyButton").setAttribute("data-price", car.precio);
+                document.getElementById("buyButton").setAttribute("data-name", `${car.marca} ${car.modelo}`);
+
+            } catch (error) {
+                console.error("Error al cargar los detalles del auto:", error);
+            }
+        });
+
+  function comprarVehiculo() {
+    window.location.href = 'compra.html';
+}
+
+    </script>
+
+</body>
+
+</body>
+
+</html>

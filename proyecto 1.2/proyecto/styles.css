@@ -1,0 +1,314 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.swiper-container {
+    width: 80%;
+    height: 400px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.descripcion {
+    margin: 20px;
+    font-size: 22px;
+}
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px;
+}
+
+.opcion {
+    text-align: center;
+}
+
+.opcion img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.opcion p {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+
+.opcion:hover img {
+    transform: scale(1.1);
+}
+
+footer {
+    background-color: #eee;
+    padding: 10px;
+}
+
+.redes img {
+    width: 30px;
+    margin: 5px;
+}
+.vehicle-detail {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.vehicle-detail img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.vehicle-detail h2 {
+    margin-top: 20px;
+}
+.vehicle-detail p {
+    margin: 10px 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.vehicle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.vehicle-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.vehicle-card:hover {
+    transform: scale(1.05);
+}
+.vehicle-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.vehicle-card h3 {
+    margin: 15px 0 5px;
+    font-size: 18px;
+}
+.vehicle-card p {
+    color: #777;
+}
+.vehicle-detail {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.vehicle-detail img {
+    width: 40%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.vehicle-detail h2 {
+    margin-top: 20px;
+}
+.vehicle-detail p {
+    margin: 10px 0;
+}
+.quote-form {
+    margin-top: 20px;
+}
+.quote-form input, .quote-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.quote-form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.quote-form button:hover {
+    background-color: #555;
+}
+.container { max-width: 1200px;
+     margin: auto; 
+     padding: 20px; 
+    }
+.card { background: white;
+     margin: 20px 0; 
+     padding: 20px;
+      border-radius: 10px; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    }
+.card img { max-width: 100%;
+     border-radius: 10px; 
+    }
+.card h3 { color: #333; }
+.container { margin: 20px; }
+input { padding: 10px; 
+    margin: 10px;
+     width: 200px; 
+    }
+button { padding: 10px; 
+    cursor: pointer; 
+}
+#map { width: 100%; 
+    height: 400px; 
+    margin-top: 20px; 
+}
+.container { max-width: 400px;
+     margin: 20px auto; 
+     padding: 20px; 
+     background: white; 
+     border-radius: 10px; 
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+input, select, button { width: 100%; 
+    padding: 10px; 
+    margin: 10px 0;
+     border: 1px solid #ccc;
+      border-radius: 5px; }
+button { background: #28a745; 
+    color: white;
+     border: none; 
+     cursor: pointer; }
+button:hover { background: #218838; }       
+.search-container {
+    text-align: center;
+    margin: 20px;
+}
+.search-container input {
+    padding: 10px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+/* Estilos generales del pie de página */
+footer {
+    background-color: #f4f4f4;
+    padding: 40px 20px;
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para el mapa de sitio */
+.mapa-sitio {
+    margin-top: 30px;
+}
+
+.mapa-sitio h3 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.mapa-lista {
+    list-style-type: none;
+    padding: 0;
+}
+
+.mapa-lista li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.mapa-lista li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.mapa-lista li a:hover {
+    color: #ff6f61; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilos para los enlaces sociales */
+.redes a {
+    color: rgb(0, 41, 128);
+    font-size: 30px;
+    padding-right: 20px;
+}
+   /* cuando coloco mi cursor sobre el icono que cambie de color */
+   .redes a:hover{
+       color: rgb(20, 153, 220);
+   }
+   .video-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.video-container iframe {
+    width: 80%;
+    max-width: 560px;
+    height: 315px;
+}
+
+  
+
+
+   
