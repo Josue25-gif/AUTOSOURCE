@@ -68,11 +68,6 @@ router.post('/registro', async (req, res) => {
         res.status(500).json({ error: 'Error al registrar el usuario' });
     }
 });
-
-<<<<<<< HEAD
-=======
-
->>>>>>> a9f4726 (primer commit)
 // Ruta de inicio de sesión
 router.post('/login', async (req, res) => {
     const { correo, contraseña } = req.body;
